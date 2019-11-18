@@ -1,0 +1,53 @@
+; RUN CONTROL PARAMETERS
+integrator               = sd
+dt                       = 0.002
+nsteps                   = 50000000
+comm_mode                = none
+
+; OUTPUT CONTROL OPTIONS
+nstxout         = 0
+nstvout         = 0
+nstenergy       = 1000
+nstlog          = 1000
+nstxtcout       = 0
+xtc-precision   = 1000
+energygrps      = System
+
+; NEIGHBORSEARCHING PARAMETERS
+nstlist         = 10
+ns-type         = Grid
+pbc             = xyz
+rlist           = 1.1
+cutoff-scheme   = Verlet
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+coulombtype     = PME
+pme_order       = 4
+fourierspacing  = 0.12
+rcoulomb        = 1.1
+vdw-type        = PME
+rvdw            = 1.1
+
+; Temperature coupling
+Tcoupl          = nose-hoover
+tc-grps         = System
+tau_t           = 0.1
+ref_t           = 293.15
+; Dispersion correction
+DispCorr                 = EnerPres ; account for vdw cut-off
+
+; Pressure coupling
+Pcoupl                   = no	
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen_vel                 = yes    ; Assign velocities to particles by taking them randomly from a Maxwell distribution
+gen_temp                = 293.15    ; Temperature to generate corresponding Maxwell distribution
+gen_seed                = -1     ; Seed for (semi) random number generation. Different numbers give different sets of velocities
+
+; OPTIONS FOR BONDS
+constraints             = all-bonds
+continuation            = no
+constraint_algorithm    = lincs
+lincs_iter              = 2
+lincs_order             = 4
+	

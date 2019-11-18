@@ -1,0 +1,22 @@
+; Define can be used to control processes
+    
+    define          = -DFLEXIBLE
+    
+    ; Parameters describing what to do, when to stop and what to save
+    integrator      = cg
+    emtol           = 100.0
+    emstep          = 0.01
+    nsteps          = 10000
+    nstenergy       = 1
+    energygrps      = System
+    
+    ; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+    nstlist         = 1
+    ns_type         = grid
+    coulombtype     = PME
+    rlist           = 1.0
+    rcoulomb        = 1.0
+    rvdw            = 1.0
+    constraints     = none
+    pbc             = xyz
+    
